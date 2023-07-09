@@ -1,4 +1,4 @@
-import Recct, {useState} from 'react';
+import {useState} from 'react';
 import {
 StyleSheet, 
 View, 
@@ -54,7 +54,7 @@ const InPassword = (props:Password)=>{
 
 const styles = StyleSheet.create({
     container:{
-        width: '90%',
+        width: '100%',
         height: 40,
         flexDirection: "row",
         justifyContent: "center",
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     icon_secure:{
         width: 20,
         height: 20,
+        marginTop: 6,
         marginEnd: 6,
         marginStart: 6
     }

@@ -2,42 +2,64 @@ import React, {useState} from "react";
 import { StatusBar } from 'expo-status-bar';
 import { 
 StyleSheet, 
-Text, 
-View 
+Text,
+TouchableOpacity, 
+View, 
 } from 'react-native';
 
 import InEmail from '@components/InEmail';
 import InPassword from "@components/InPassword";
-
+import ButtonLogin from "@components/ButtonLogin";
+import TextErroEmail from "@components/TextErroEmail";
+import TextErroPassword from "@components/TextErroPassword";
+import ButtonRecover from "@components/ButtonRecover";
+import ButtonCreate from "@components/ButtonCreate";
 
 const Signin = () =>{
 
   const [email, setEamil] = useState(null);
   const [password, setPassword] = useState(null);
-  const [erroEmail, setErroEmail] = useState('erro');
-  const [erroPassword, setErroPassword] = useState('erro');
+  const [errEmail, setErroEmail] = useState('');
+  const [errPassword, setErroPassword] = useState('');
 
-  function validation(){
+  const validation = ()=>{
     if(email != null && password != null){
-
+      console.log('entrando no app...');
     }
-    if(email == null || email == ''){
-
+    if(email == null || password == null){
+      console.log('email ou senha null');
+      setErroEmail('*Email informado errado.');
+      setErroPassword('*Senha informada errada.');
     }
-    if(password == null || password == ''){
-
+    if(email == null){
+      console.log('email null');
+      setErroEmail('*Email informado errado.');
+    }
+    if(password == null){
+      console.log('senha null');
+      setErroPassword('*Senha informada errada.');
     }
   }
 
   return (
     <View style={styles.container}>
-      <InEmail email={setEamil}/>
-      <View style={styles.container_erro_email}>
-        <Text style={styles.text_erro_email}>{erroEmail}</Text>
-      </View>
-      <InPassword password={setPassword}/>
-      <View style={styles.container_erro_password}>
-        <Text style={styles.text_erro_password}>{erroPassword}</Text>
+      <View style={styles.container_view}>
+        <InEmail email={setEamil}/>
+        <TextErroEmail errEmail={errEmail}/>     
+        
+        <InPassword password={setPassword}/>
+        <TextErroPassword errPassword={errPassword}/>
+        
+        <ButtonRecover/>
+
+        <TouchableOpacity
+          style={styles.container_btn_login}
+          onPress={validation}>
+          <ButtonLogin/>
+        </TouchableOpacity>
+
+        <ButtonCreate/>
+        
       </View>
       <StatusBar style="auto" />
     </View>
@@ -51,29 +73,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  container_erro_email:{
-    width: '90%',
-    marginTop: 2,
-    marginStart: 18,
-    marginBottom: 18
+  container_view:{
+    width: '80%'
   },
-  text_erro_email:{
-    color: '#FF0000',
-    fontSize: 12,
-    fontStyle: "italic",
-    fontWeight: "400"
-  },
-  container_erro_password:{
-    width: '90%',
-    marginTop: 2,
-    marginStart: 18,
-    marginBottom: 18
-  },
-  text_erro_password:{
-    color: '#FF0000',
-    fontSize: 12,
-    fontStyle: "italic",
-    fontWeight: "400"
+  container_btn_login:{
+    alignItems: "center",
+    justifyContent: "center",
+    marginStart: 32,
+    marginEnd: 32
   }
 });
 

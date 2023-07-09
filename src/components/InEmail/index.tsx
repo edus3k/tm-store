@@ -10,7 +10,7 @@ export type Email = {
 }
 
 const InEmail = (props:Email)=>{
-  
+   
     return(
         <View style={styles.container}>
             <Text style={styles.icon_email}>@</Text>
@@ -26,7 +26,7 @@ const InEmail = (props:Email)=>{
 
 const styles = StyleSheet.create({
     container:{
-        width: '90%',
+        width: '100%',
         height: 40,
         flexDirection: "row",
         justifyContent: "center",
