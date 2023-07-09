@@ -1,12 +1,12 @@
-import React, {useState} from "react";
 import {
 StyleSheet, 
 View, 
 TextInput, 
-Text} from "react-native";
+Text,
+} from "react-native";
 
 export type Email = {
-    email: undefined
+    email: any
 }
 
 const InEmail = (props:Email)=>{
@@ -17,8 +17,8 @@ const InEmail = (props:Email)=>{
             <TextInput
                 style={styles.in_email}
                 placeholder="Digite um email"
+                keyboardType="email-address"
                 onChangeText={props.email}
-                value={props.email}
             />
         </View>
     );
@@ -31,14 +31,17 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: '#A4A4A4',
+        backgroundColor: '#FFF',
         borderRadius: 12,
+        borderWidth: 1,
+        borderColor: '#000'
     },
     icon_email:{
         paddingEnd: 6,
         paddingStart: 6,
+        fontSize: 18,
         fontStyle: "italic",
-        fontWeight: "400"
+        fontWeight: "500"
     },
     in_email:{
         width: '90%',
