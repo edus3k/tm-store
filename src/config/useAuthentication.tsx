@@ -4,7 +4,7 @@ onAuthStateChanged,
 User 
 } from 'firebase/auth';
 
-import { Auth } from '@config/firebase';
+import { Auth } from '@config/Firebase';
 
 const getAuts = Auth;
 

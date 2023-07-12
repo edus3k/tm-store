@@ -9,7 +9,7 @@ View,
 
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Auth } from '@config/firebase';
+import { Auth } from '@config/Firebase';
 
 import { StackTypes } from '@config/StackTypes';
 import NameApp from "@components/NameApp";
