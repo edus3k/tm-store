@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { 
 StyleSheet, 
@@ -7,6 +7,12 @@ TouchableOpacity,
 View, 
 } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { Auth } from '@config/firebase';
+
+import { StackTypes } from '@config/StackTypes';
+import NameApp from "@components/NameApp";
 import InEmail from '@components/InEmail';
 import InPassword from "@components/InPassword";
 import ButtonLogin from "@components/ButtonLogin";
@@ -15,7 +21,10 @@ import TextErroPassword from "@components/TextErroPassword";
 import ButtonRecover from "@components/ButtonRecover";
 import ButtonCreate from "@components/ButtonCreate";
 
+
 const Signin = () =>{
+
+  const navigation = useNavigation<StackTypes>();
 
   const [email, setEamil] = useState(null);
   const [password, setPassword] = useState(null);
@@ -24,7 +33,21 @@ const Signin = () =>{
 
   const validation = ()=>{
     if(email != null && password != null){
-      console.log('entrando no app...');
+      
+      const getAuths = Auth;
+      
+      signInWithEmailAndPassword(getAuths, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          console.log('entrando no app...');
+          //const user = userCredential.user;
+          navigation.navigate('Home');
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log({erro:errorCode, errorMesg: errorMessage});
+        });
     }
     if(email == null || password == null){
       console.log('email ou senha null');
@@ -44,6 +67,9 @@ const Signin = () =>{
   return (
     <View style={styles.container}>
       <View style={styles.container_view}>
+        
+        <NameApp/>
+
         <InEmail email={setEamil}/>
         <TextErroEmail errEmail={errEmail}/>     
         

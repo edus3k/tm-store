@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 
-import UsersRoutes from '@routes/UsersStacks';
+import StacksApp from '@routes/StacksApp';
 
 const App = ()=>{
   return (
     <NavigationContainer>
-      <UsersRoutes/>
+      <StacksApp/>
     </NavigationContainer>
   );
 }
