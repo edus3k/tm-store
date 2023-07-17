@@ -5,23 +5,28 @@ Text,
 Image,
 TouchableOpacity
 } from 'react-native';
-
+import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import {useNavigation} from '@react-navigation/native';
 
+import Logo from '@assets/logo.tm.png';
+import Loading from '@components/Loading';
 import { StackTypes } from '@config/StackTypes';
 
+const gradient = [
+'transparent', 'rgba(0,0,0,0.2)',
+'rgba(0,0,0,0.4)', 'rgba(0,0,0,0.6)',
+'rgba(0,0,0,0.8)', 'rgba(0,0,0,9)'];
+
 const Welcome = () => {
-    
     const navigation = useNavigation<StackTypes>();
 
     const login = () =>{
         navigation.navigate('Signin');
     }
-
-    return (
-    <View style={styles.container}>
-        <View style={styles.container_icon}>
+    /**
+     * <View style={styles.container_icon}>
+            
         </View>
         <Animatable.View 
         delay={700}
@@ -36,74 +41,56 @@ const Welcome = () => {
             <Text style={styles.button_text}>Acessar</Text>
         </TouchableOpacity>
         </Animatable.View>
-    </View>
+     * 
+     */
+    return (
+        <View style={styles.container}>
+            <LinearGradient style={styles.gradient} 
+            colors={gradient}>    
+                <View style={styles.welcome}>
+                    <Image source={Logo} style={styles.logo}/>
+                    <Text >Bem Vindo a Woman's Touch Store</Text>
+                    <Text >Vanha comparar sua felicidade</Text>
+                    <Text >Faça o login para começar!</Text>
+                    <TouchableOpacity style={styles.button} 
+                    onPress={login}>
+                        <Text >Acessar</Text>
+                    </TouchableOpacity>
+                </View>
+            </LinearGradient>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-    flex: 1,
-    backgroundColor: '#FE0364',
-    alignItems: 'center',
-    justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#FFF',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    container_icon:{
-    flex:3,
-    width:'100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    gradient:{
+        width: '100%',
+        height: '100%'
     },
-    container_text:{
-    flex:1,
-    width:'100%',
-    backgroundColor: '#FFF',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    paddingTop: '5%',
-    paddingBottom: '5%',
-    paddingStart: '12%',
-    paddingEnd: '12%'
+    welcome:{
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    icon:{
-    width: '60%',
-    height: '70%'
-    },
-    title:{
-    fontSize: 24,
-    textAlign: 'center',
-    fontStyle: 'italic',
-    fontWeight: '600',
-    marginBottom: 10
-    },
-    label:{
-    fontSize: 16,
-    textAlign: 'justify',
-    fontStyle: 'italic',
-    fontWeight: '300',
-    marginBottom: 18
-    },
-    label_button:{
-    color:'#A1A1A1',
-    fontSize: 20,
-    textAlign: 'center',
-    fontWeight: '300',
-    marginBottom: 20
-    },
-    button_text:{
-    color: '#FFF',
-    fontSize: 18,
-    textAlign: 'center',
-    fontWeight: '800',
+    logo:{
+        width: 64,
+        height: 64
     },
     button:{
-    backgroundColor: '#FE0364',
-    borderRadius: 25,
-    textAlign: 'center',
-    marginStart: '20%',
-    marginEnd: '20%',
-    padding: 10
+        width: '60%',
+        height: 40,
+        backgroundColor: '#FFF',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 32
     }
-    
 });
 
 export default Welcome;

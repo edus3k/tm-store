@@ -6,8 +6,6 @@ import Store from '@views/Store';
 import Home from '@views/Home';
 import Profiler from '@views/Profiler';
 
-import Loading from '@views/Loading';
-
 import Welcome from '@views/Welcome';
 import Signin from '@views/Signin';
 //import RecoverUsers from '@views/RecoverUsers';
@@ -73,11 +71,6 @@ const RoutesDev = () =>{
 
     return(
         <Stack.Navigator screenOptions={{headerShown: false}}>
-             <Stack.Screen
-                name='Loading'
-                component={Loading}
-            />
-            
             <Stack.Screen
                 name='Welcome'
                 component={Welcome}

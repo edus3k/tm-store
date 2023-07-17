@@ -7,10 +7,7 @@ Image,
 } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import Logo from '@assets/logo.tm.png';
-
 const Loading = () =>{
-  
   const [loading, setLoading] = useState(false);
  
   useEffect(() => {
@@ -21,18 +18,17 @@ const Loading = () =>{
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   };
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={Logo}/>
       <Spinner
-          visible={loading}
-          textContent={'Loading...'}
-          textStyle={styles.spinner_text}
-          indicatorStyle={styles.spinner}
-        />
+        visible={loading}
+        textContent={'Loading...'}
+        textStyle={styles.spinner_text}
+        indicatorStyle={styles.spinner}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -41,14 +37,8 @@ const Loading = () =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  logo:{
-    width: 68,
-    height: 68
   },
   spinner:{
     marginTop: '20%'
