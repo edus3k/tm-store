@@ -3,6 +3,8 @@ import env from '@config/EnvsApp';
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: env.prodVariableFirebase.FIREBASE_API_KEY,
@@ -17,7 +19,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const Auth = getAuth(app);
-const Strore = '';
+const Data = getFirestore(app);
+const Storage = getStorage(app);
 
 
-export {Auth, Strore};
+export {Auth, Data, Storage};

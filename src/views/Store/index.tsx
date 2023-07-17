@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 StyleSheet,
 View,
-Text
+Text,
+Image
 } from 'react-native';
 
-const Store = ()=>{
+import Detach from '@components/Detach';
 
+const Store = ()=>{
     return(
         <View>
             <Text>Store</Text>
+            <View style={styles.container_detach}>
+                <Detach/>
+            </View>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container:{
+
+    },
+    container_detach:{
+
+    }
+});
 
 export default Store;

@@ -1,8 +1,5 @@
-import React, {useState} from 'react';
-import { 
-onAuthStateChanged, 
-User 
-} from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged, User } from 'firebase/auth';
 
 import { Auth } from '@config/Firebase';
 
@@ -12,7 +9,7 @@ const useAuthentication = ()=>{
 
     const [user, setUser] = useState<User>();
 
-    React.useEffect(() => {
+    useEffect(() => {
         const unsubscribeFromAuthStatuChanged = 
         onAuthStateChanged(getAuts, (user) => {
             if (user) {
