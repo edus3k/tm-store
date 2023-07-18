@@ -46,17 +46,22 @@ const Welcome = () => {
     return (
         <View style={styles.container}>
             <LinearGradient style={styles.gradient} 
-            colors={gradient}>    
-                <View style={styles.welcome}>
+            colors={gradient}>   
+                
+                <Animatable.View style={styles.welcome}
+                delay={0}
+                animation='fadeInUp'>
                     <Image source={Logo} style={styles.logo}/>
-                    <Text >Bem Vindo a Woman's Touch Store</Text>
-                    <Text >Vanha comparar sua felicidade</Text>
-                    <Text >Faça o login para começar!</Text>
-                    <TouchableOpacity style={styles.button} 
-                    onPress={login}>
-                        <Text >Acessar</Text>
-                    </TouchableOpacity>
-                </View>
+                    <View>
+                        <Text >Bem Vindo a Woman's Touch Store</Text>
+                        <Text >Vanha comparar sua felicidade</Text>
+                        <Text >Faça o login para começar!</Text>
+                        <TouchableOpacity style={styles.button} 
+                        onPress={login}>
+                            <Text >Acessar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </Animatable.View>
             </LinearGradient>
         </View>
     );
@@ -89,7 +94,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 32
+        borderRadius: 32,
+        marginTop: 32
     }
 });
 

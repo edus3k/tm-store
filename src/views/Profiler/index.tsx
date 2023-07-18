@@ -7,12 +7,27 @@ TouchableOpacity,
 View, 
 } from 'react-native';
 
+import StacksApp from "@routes/StacksApp";
+import StacksAuth from '@routes/StacksAuth';
+import { Auth } from "@config/Firebase";
+
 const Profiler = () =>{
+  const user = Auth
+
+  const exit = ()=>{
+    //user.signOut;
+    return <StacksAuth/>
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.container_view}>
         <Text>Profielr</Text>
+        <Text>{}</Text>
+        <TouchableOpacity
+        onPress={exit}>
+          <Text>Sair</Text>
+        </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>

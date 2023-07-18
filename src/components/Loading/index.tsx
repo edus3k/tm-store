@@ -4,27 +4,30 @@ import {
 StyleSheet, 
 View,
 Image,
+ViewStyle,
 } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-const Loading = () =>{
-  const [loading, setLoading] = useState(false);
+import Logo from '@assets/logo.tm.png';
+
+export type Loading = {
+  state: boolean
+}
+
+const Loading = (props:Loading) =>{
  
-  useEffect(() => {
-    startLoading();
-  }, []);
-
-  const startLoading = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  };
-
   return (
     <View style={styles.container}>
+      <Image source={Logo} style={
+        {
+          display: props.state == true ? 'flex' :  'none',
+          marginTop: '72%',
+          width: 64,
+          height: 64
+        }}
+      />
       <Spinner
-        visible={loading}
+        visible={props.state}
         textContent={'Loading...'}
         textStyle={styles.spinner_text}
         indicatorStyle={styles.spinner}
@@ -37,8 +40,11 @@ const Loading = () =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
+    alignContent: 'center',
+    width: '100%',
+    height: '100%'
   },
   spinner:{
     marginTop: '20%'
