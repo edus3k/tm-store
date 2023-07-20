@@ -15,7 +15,20 @@ export type Loading = {
 }
 
 const Loading = (props:Loading) =>{
- 
+  
+  const [loading, setLoading] = useState(false);
+  
+  useEffect(() => {
+    startLoading();
+  }, []);
+
+  const startLoading = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    },2000);
+  };
+  
   return (
     <View style={styles.container}>
       <Image source={Logo} style={

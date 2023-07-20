@@ -26,6 +26,8 @@ const Detach = ()=>{
             const imageURLs = await Promise.all(
               result.items.map(async (imageRef) => {
                 const url = await getDownloadURL(imageRef);
+                console.log(url);
+                
                 return url;
               })
             );

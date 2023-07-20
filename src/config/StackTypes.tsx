@@ -8,6 +8,7 @@ type StackNavigation = {
     RecoverUsers: undefined,
     CreateUsers: undefined,
     Home: undefined
+    Profiler: undefined,
     TabsBottom: undefined
 }
 

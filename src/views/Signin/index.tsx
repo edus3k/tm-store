@@ -41,7 +41,7 @@ const Signin = () =>{
           // Signed in 
           console.log('entrando no app...');
           //const user = userCredential.user;
-          navigation.navigate('Home');
+          navigation.navigate('Profiler');
         })
         .catch((error) => {
           const errorCode = error.code;

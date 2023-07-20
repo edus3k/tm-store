@@ -7,13 +7,26 @@ import Profiler from '@views/Profiler';
 
 const Tabs = createBottomTabNavigator();
 
-const BottomTabs = () =>{
+const TabsBottom = () =>{
     return(
         <Tabs.Navigator 
             screenOptions={{
                 headerShown: false,
                 tabBarHideOnKeyboard: true
             }}>
+                
+            <Tabs.Screen
+                name='Profiler'
+                component={Profiler}
+                options={{
+                    tabBarIcon: ({ size, color })=><Feather 
+                        name='user'
+                        size={size}
+                        color={color}
+                    />
+                }}
+            />
+
             <Tabs.Screen
                 name='Home'
                 component={Home}
@@ -36,19 +49,8 @@ const BottomTabs = () =>{
                     />
                 }}
             />
-            <Tabs.Screen
-                name='Profiler'
-                component={Profiler}
-                options={{
-                    tabBarIcon: ({ size, color })=><Feather 
-                        name='user'
-                        size={size}
-                        color={color}
-                    />
-                }}
-            />
         </Tabs.Navigator>
     )
 };
 
-export default BottomTabs;
+export default TabsBottom;

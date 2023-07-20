@@ -7,16 +7,21 @@ TouchableOpacity,
 View, 
 } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
 import StacksApp from "@routes/StacksApp";
 import StacksAuth from '@routes/StacksAuth';
 import { Auth } from "@config/Firebase";
+import { StackTypes } from "@config/StackTypes";
 
 const Profiler = () =>{
+
+  const navigation = useNavigation<StackTypes>();
+
   const user = Auth
 
   const exit = ()=>{
-    //user.signOut;
-    return <StacksAuth/>
+    user.signOut();
+    navigation.navigate('StacksApp')
   }
 
   return (

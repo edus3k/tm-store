@@ -4,9 +4,10 @@ import Welcome from '@views/Welcome';
 import Signin from '@views/Signin';
 //import RecoverUsers from '@views/RecoverUsers';
 //import CreateUsers from '@views/CreateUsers';
-import TabsBottom from '@routes/TabsBottom';
+import Profiler from '@views/Profiler';
 
 const Stack = createNativeStackNavigator();
+
 
 const StacksAuth = () =>{
     return(
@@ -19,9 +20,9 @@ const StacksAuth = () =>{
                 name='Signin'
                 component={Signin}
             />
-            <Stack.Screen
-                name='TabsBottom'
-                component={TabsBottom}
+           <Stack.Screen
+                name='Profiler'
+                component={Profiler}
             />
         </Stack.Navigator>
     )

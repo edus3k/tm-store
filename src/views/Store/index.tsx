@@ -13,7 +13,7 @@ const Store = ()=>{
         <View>
             <Text>Store</Text>
             <View style={styles.container_detach}>
-                <Detach/>
+                
             </View>
         </View>
     );

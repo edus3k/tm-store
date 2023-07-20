@@ -5,7 +5,6 @@ import useAuthentication from '@config/useAuthentication';
 import StacksUsers from '@routes/StacksUsers';
 import StacksAuth from '@routes/StacksAuth';
 
-
 const StacksApp = ()=>{
  
   const [loading, setLoading] = useState(false);
@@ -22,14 +21,13 @@ const StacksApp = ()=>{
     },2000);
   };
 
-  if(user){
+  if(!user){
+    console.log('users == false');
+    return loading == true ? <Loading state={loading}/> : <StacksAuth/> 
+  }else{
     console.log('users == true');
     return loading == true ? <Loading state={loading}/> : <StacksUsers/>
-  }else{
-    console.log('users == false');
-    setTimeout(() => {
-      return loading == true ? <Loading state={loading}/> : <StacksAuth/> 
-    },1);
+    
   }
 
 }
